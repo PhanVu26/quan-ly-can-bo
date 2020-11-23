@@ -1,0 +1,46 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+img {
+	height: 135px;
+}
+
+.menu {
+	display: flex;
+	align-items: center;
+}
+.menu > ol {
+	list-style-type: none !important;
+	text-align: center;
+	padding-left: 15px;
+}
+
+li {
+	margin-bottom: 20px;
+    border: solid 0.5px green;
+    border-radius: 10px;
+}
+
+.menu > ol > li > a {
+	text-decoration: none;
+	padding: 10px;
+} 
+
+.gallery {
+	display: flex;
+	flex-direction: column;
+}
+
+.content {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.content > img {
+	margin-top: 25px;
+	height: 100%;
+}

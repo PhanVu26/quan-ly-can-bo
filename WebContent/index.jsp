@@ -3,10 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>Tag frame</title>
 </head>
-<body>
-	<h2>Hello world</h2>
+<FRAMESET rows= "25%,*">
+	<frame name="header" src="header.jsp" noresize="noresize"></frame>
+	<FRAMESET cols= "20%,*,15%">
+		<frame name="menu" src="menu.jsp" noresize="noresize"></frame>
+		<frame name="mainContent" src="mainContent.jsp" noresize="noresize"></frame>
+		<frame name="gallery" src="gallery.jsp" noresize="noresize"></frame>
+	</FRAMESET>
+</FRAMESET>
+<body onload="">
 </body>
 </html>
