@@ -11,7 +11,7 @@
 	<div class="menu">
 		<ol>
 			<li><a href="home.jsp" target="mainContent">Trang chủ</a></li>
-			<li><a href="#">Xem nhân viên</a></li>
+			<li><a href="listNV" target="mainContent"">Xem nhân viên</a></li>
 			<li><a href="#">Xem phòng ban</a></li>
 			<li><a href="#">Tìm kiếm</a></li>
 			<li><a href="#">Cập nhật thông tin</a></li>
