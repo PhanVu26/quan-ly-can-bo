@@ -1,0 +1,68 @@
+package com.phanvu.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.phanvu.mode.bo.NhanVienBO;
+import com.phanvu.model.bean.NhanVien;
+
+/**
+ * Servlet implementation class deleteSvServlet
+ */
+@WebServlet("/DeleteNhanVien")
+public class DeleteNhanVien extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeleteNhanVien() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int maNV = Integer.parseInt(request.getParameter("maNV"));
+		NhanVienBO nvBO = new NhanVienBO();
+		NhanVien sv = nvBO.findOne(maNV);
+		
+		if(nvBO.delete(maNV)) {
+			RequestDispatcher rd = request.getRequestDispatcher("listNV");
+			rd.forward(request, response);
+		}
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+//		NhanVienBO nvBO = new NhanVienBO();
+//		int maNV = Integer.parseInt(request.getParameter("maNV"));
+//		String des = "";
+//		if(nvBO.delete(mssv)) {
+//			des = "/listSV.jsp";
+//			List<SinhVien> listSv = nvBO.getAllSinhVien();
+//			request.setAttribute("listSv", listSv);
+//		}else {
+//			des = "/delete.jsp";
+//		}
+//		RequestDispatcher rd = request.getRequestDispatcher(des);
+//		rd.forward(request, response);
+	}
+
+}

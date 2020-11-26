@@ -14,4 +14,12 @@ public class NhanVienBO {
 	public boolean themNhanVien(NhanVien nv) {
 		return nvDAO.insert(nv);
 	}
+
+	public NhanVien findOne(int maNV) {
+		return nvDAO.findOne(maNV);
+	}
+
+	public boolean delete(int maNV) {
+		return nvDAO.delete(maNV);
+	}
 }
