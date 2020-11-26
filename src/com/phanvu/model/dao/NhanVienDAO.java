@@ -1,6 +1,7 @@
 package com.phanvu.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,6 +34,44 @@ public class NhanVienDAO extends AbstractDAO {
 	 * return null; }
 	 */
 
+	public NhanVien findOne(int maNV) {
+		String sql = "SELECT * FROM NhanVien WHERE maNV = ?";
+		NhanVien nv = new NhanVien();
+		PhongBan phongBan = new PhongBan();
+		ChucVu chucVu = new ChucVu();
+		try {
+			PreparedStatement prst = cnn.prepareStatement(sql);
+			prst.setInt(1, maNV);
+			ResultSet rs = prst.executeQuery();
+			while(rs.next()) {
+				
+				phongBan.setMaPB(rs.getInt("maPB"));
+				phongBan.setTenPB(rs.getString("tenPB"));
+
+				chucVu.setMaChucVu(rs.getInt("maChucVu"));
+				chucVu.setTenChucVu(rs.getString("tenChucVu"));
+
+				nv.setMaNV(rs.getInt("maNV"));
+				nv.setFullName(rs.getString("fullName"));
+				nv.setAge(rs.getInt("age"));
+				nv.setGioiTinh(rs.getBoolean("gioiTinh"));
+				nv.setNgaySinh(rs.getString("ngaySinh"));
+				nv.setAddress(rs.getString("address"));
+				nv.setEmail(rs.getString("email"));
+				nv.setPhone(rs.getString("phone"));
+				nv.setPhongBan(phongBan);
+				nv.setChucVu(chucVu);
+				
+				return nv;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		return null;
+	}
 	public List<NhanVien> getAllNhanViens() {
 		List<NhanVien> results = new ArrayList<NhanVien>();
 		String sql = "SELECT * FROM ((nhanvien" + " INNER JOIN phongban ON nhanvien.maPB = phongban.maPB)"
@@ -92,11 +131,11 @@ public class NhanVienDAO extends AbstractDAO {
 		} return true;
 	}
 
-	public boolean delete(int id) {
+	public boolean delete(int maNV) {
 		String sql = "DELETE FROM NhanVien WHERE maNV=?";
 		try {
 			java.sql.PreparedStatement ps = cnn.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setInt(1, maNV);
 			ps.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -11,7 +11,8 @@
 <body>
 
 	<form name="searchForm" action="SearchServlet" method="POST">
-		<input type="button" value="Thêm mới"> <input type="text"
+		<a href="addNV" target="mainContent"><input type="button" value="Thêm mới"></a>
+		<input type="text"
 			name="keySearch">
 		<button type="submit">Search</button>
 	</form>
@@ -39,7 +40,7 @@
 					<tr>
 						<td><%=nv.getFullName() %></td>
 						<td><%=nv.getAge() %></td>
-						<td><%=nv.getGioiTinh() %></td>
+						<td><%=nv.getGioiTinh()==true?1:0 %></td>
 						<td><%=nv.getNgaySinh() %></td>
 						<td><%=nv.getAddress() %></td>
 						<td><%=nv.getPhone() %></td>
