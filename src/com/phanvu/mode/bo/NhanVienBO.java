@@ -22,4 +22,9 @@ public class NhanVienBO {
 	public boolean delete(int maNV) {
 		return nvDAO.delete(maNV);
 	}
+
+	public boolean updateNV(NhanVien nv) {
+		return nvDAO.updateNV(nv);
+		
+	}
 }

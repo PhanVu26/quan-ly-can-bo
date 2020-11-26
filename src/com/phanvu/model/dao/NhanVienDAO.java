@@ -35,7 +35,8 @@ public class NhanVienDAO extends AbstractDAO {
 	 */
 
 	public NhanVien findOne(int maNV) {
-		String sql = "SELECT * FROM NhanVien WHERE maNV = ?";
+		String sql = "SELECT * FROM ((nhanvien" + " INNER JOIN phongban ON nhanvien.maPB = phongban.maPB)"
+				+ " INNER JOIN chucvu ON nhanvien.maChucVu = chucvu.maChucVu) WHERE maNV = ?";
 		NhanVien nv = new NhanVien();
 		PhongBan phongBan = new PhongBan();
 		ChucVu chucVu = new ChucVu();
@@ -70,7 +71,7 @@ public class NhanVienDAO extends AbstractDAO {
 			return null;
 		}
 		
-		return null;
+		return nv;
 	}
 	public List<NhanVien> getAllNhanViens() {
 		List<NhanVien> results = new ArrayList<NhanVien>();
@@ -143,6 +144,34 @@ public class NhanVienDAO extends AbstractDAO {
 			return false;
 		}
 		return true;
+	}
+	
+	
+	public boolean updateNV(NhanVien nv) {
+		String sql =
+				 "UPDATE nhanvien SET fullName=?, age=?, " +
+				 "gioiTinh=?, ngaySinh= ?, address=?, phone=?, email=?, maPB=?, maChucVu=? " +
+				 " WHERE maNV=?";
+		PreparedStatement preparedStatement;
+		
+		try {
+			preparedStatement = cnn.prepareStatement(sql);
+			preparedStatement.setString(1, nv.getFullName()); 
+			preparedStatement.setInt(2,nv.getAge()); 
+			preparedStatement.setBoolean(3, nv.getGioiTinh());
+			preparedStatement.setString(4, nv.getNgaySinh());
+			preparedStatement.setString(5, nv.getAddress());
+	        preparedStatement.setString(6, nv.getPhone()); 
+	        preparedStatement.setString(7, nv.getEmail());
+	        preparedStatement.setInt(8, nv.getPhongBan().getMaPB());	  
+	        preparedStatement.setInt(9, nv.getChucVu().getMaChucVu());
+	        preparedStatement.setInt(10, nv.getMaNV());
+	        preparedStatement.executeUpdate(); 
+	        return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	/*
