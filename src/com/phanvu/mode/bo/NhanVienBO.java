@@ -27,4 +27,13 @@ public class NhanVienBO {
 		return nvDAO.updateNV(nv);
 		
 	}
+
+	public List<NhanVien> searchNV(int maPB) {
+		return nvDAO.findNVByPb(maPB);
+	}
+
+	public List<NhanVien> findNVByName(String key) {
+	
+		return nvDAO.search(key);
+	}
 }

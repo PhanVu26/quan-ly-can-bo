@@ -16,16 +16,16 @@ import com.phanvu.model.bean.NhanVien;
 import com.phanvu.model.bean.PhongBan;
 
 /**
- * Servlet implementation class listNVController
+ * Servlet implementation class SearchNV
  */
-@WebServlet("/listNV")
-public class listNVController extends HttpServlet {
+@WebServlet("/SearchNV")
+public class SearchNV extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public listNVController() {
+    public SearchNV() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,22 +34,37 @@ public class listNVController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/danhSachNV.jsp");
-		NhanVienBO nvBO = new NhanVienBO();
-		PhongBanBO pbBO = new PhongBanBO();
-		List<NhanVien> listNv = nvBO.getAll();
-		List<PhongBan> listPB = pbBO.getAll();
-		request.setAttribute("listNV", listNv);
-		request.setAttribute("listPB", listPB);
-		rd.forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		NhanVienBO nvBO = new NhanVienBO();
+		int maPB = Integer.parseInt(request.getParameter("phongBan"));
+		String key = request.getParameter("keySearch");
+		List<NhanVien> listNV;
+		
+		if(key.equals("")) {
+			if(maPB == -1) {
+				listNV = nvBO.getAll();
+			}
+			else {
+				listNV = nvBO.searchNV(maPB);
+			}
+		} else {
+			listNV = nvBO.findNVByName(key);
+		}
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/danhSachNV.jsp");
+		
+		PhongBanBO pbBO = new PhongBanBO();
+		List<PhongBan> listPB = pbBO.getAll();
+		
+		request.setAttribute("listNV", listNV);
+		request.setAttribute("listPB", listPB);
+		
+		rd.forward(request, response);
 	}
 
 }
