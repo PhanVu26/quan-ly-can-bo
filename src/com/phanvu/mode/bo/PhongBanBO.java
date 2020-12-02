@@ -19,4 +19,12 @@ public class PhongBanBO {
 	public boolean delete(int maPB) {
 		return pbDAO.delete(maPB);
 	}
+
+	public boolean updatePB(PhongBan pb) {
+		return pbDAO.updatePB(pb);
+	}
+
+	public PhongBan findOne(int maPB) {
+		return pbDAO.findOne(maPB);
+	}
 }
