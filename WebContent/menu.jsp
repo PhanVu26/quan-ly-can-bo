@@ -13,10 +13,6 @@
 			<li><a href="home.jsp" target="mainContent">Trang chủ</a></li>
 			<li><a href="listNV" target="mainContent">Xem nhân viên</a></li>
 			<li><a href="listPB" target="mainContent">Xem phòng ban</a></li>
-			<li><a href="#" target="mainContent">Tìm kiếm</a></li>
-			<li><a href="#" target="mainContent">Cập nhật thông tin</a></li>
-			<li><a href="#" target="mainContent">Xóa thông tin</a></li>
-			<li><a href="#" target="mainContent">Xóa tất cả</a></li>
 			<li><a href="#" target="mainContent">Trợ giúp chương trình</a></li>
 		</ol>
 	</div>
