@@ -11,4 +11,8 @@ public class PhongBanBO {
 	public List<PhongBan> getAll(){
 		return pbDAO.getAll();
 	}
+
+	public boolean addPB(PhongBan pb) {
+		return pbDAO.insert(pb);
+	}
 }

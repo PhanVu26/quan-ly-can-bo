@@ -12,7 +12,24 @@
 	<%
 		List<PhongBan> listPB = (List<PhongBan>) request.getAttribute("listPB");
 	%>
+	<form name="searchForm" action="SearchPB" method="POST">
+		<a href="addPB.jsp" target="mainContent"><input type="button"
+			value="Thêm mới"></a> <input type="text" name="keySearch" placeholder="Nhập tên phòng ban">
+		<select name="phongBan">
+			<option value="-1"> Tất cả
+			<%
+				for (PhongBan pb : listPB) {
+			%>
+			<option value="<%=pb.getMaPB()%>">
+				<%=pb.getTenPB()%></option>
+			<%
+				}
+			%>
+		</select>
+		<button type="submit">Search</button>
+	</form>
 	<table border="1" width="100%">
+		<caption><h2>Danh sách phòng ban </h2></caption>
 		<tr>
 			<th>Mã phòng ban</th>
 			<th>Tên phòng ban</th>
