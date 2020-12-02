@@ -15,4 +15,8 @@ public class PhongBanBO {
 	public boolean addPB(PhongBan pb) {
 		return pbDAO.insert(pb);
 	}
+
+	public boolean delete(int maPB) {
+		return pbDAO.delete(maPB);
+	}
 }

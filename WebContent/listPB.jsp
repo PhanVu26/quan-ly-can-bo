@@ -42,8 +42,8 @@
 					<tr>
 						<td><%=pb.getMaPB() %></td>
 						<td><%=pb.getTenPB()%></td>
-						<td><a href="DeletePB?maNV=<%=pb.getMaPB() %>">Delete</a></td>
-						<td><a href="UpdatePB?maNV=<%=pb.getMaPB() %>">Update</a></td>
+						<td><a href="DeletePB?maPB=<%=pb.getMaPB() %>">Delete</a></td>
+						<td><a href="UpdatePB?maPB=<%=pb.getMaPB() %>">Update</a></td>
 					</tr>
 			<%} %>
 
